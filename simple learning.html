@@ -1,0 +1,213 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bright Buddies — Letters & Numbers</title>
+<style>
+:root{--ink:#27304b;--purple:#7357db;--pink:#ff7196;--yellow:#ffcc55;--mint:#50cfad;--paper:#fffdf8}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:"Trebuchet MS",Arial,sans-serif;background:radial-gradient(circle at 10% 14%,#ffe4a6 0 5%,transparent 5.2%),radial-gradient(circle at 91% 18%,#e1d8ff 0 7%,transparent 7.2%),radial-gradient(circle at 5% 88%,#c5f5e7 0 8%,transparent 8.2%),#f7f5ff}
+.wrap{max-width:1050px;margin:auto;padding:25px 22px 48px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:23px}
+.brand{font-size:23px;font-weight:900;display:flex;align-items:center;gap:9px}
+.brand-icon{background:var(--yellow);width:43px;height:43px;border-radius:15px;display:grid;place-items:center;font-size:24px;transform:rotate(-7deg)}
+.badge{background:#fff;border:2px solid #eeeaff;border-radius:99px;padding:9px 15px;font-weight:900;color:var(--purple)}
+.hero{text-align:center;margin:10px 0 25px}
+.hero h1{font-size:clamp(34px,6vw,57px);line-height:1.08;margin:0 0 8px;letter-spacing:-1px}
+.hero h1 span{color:var(--purple)}
+.hero p{font-size:17px;margin:0;color:#68708a}
+.layout{display:grid;grid-template-columns:310px 1fr;gap:22px;align-items:stretch}
+.panel,.play{background:var(--paper);border:2px solid white;border-radius:28px;box-shadow:0 14px 40px #55449612}
+.panel{padding:24px}
+.panel h2{font-size:23px;margin:0 0 6px}
+.sub{font-size:14px;color:#7b8196;margin:0 0 18px}
+.topic{width:100%;border:2px solid #eeecf8;border-radius:18px;padding:14px 13px;background:white;text-align:left;font-size:16px;font-weight:800;color:var(--ink);margin:7px 0;cursor:pointer;display:flex;gap:11px;align-items:center;transition:.15s}
+.topic:hover{transform:translateY(-2px)}
+.topic.selected{border-color:var(--purple);background:#f2efff}
+.topic .emoji{font-size:24px}
+.select-label{display:block;margin:17px 0 8px;font-size:13px;font-weight:900;color:#778098}
+.rounds{width:100%;border:2px solid #eeecf8;border-radius:14px;padding:12px;font-size:15px;font-weight:700;color:var(--ink);background:white}
+.start{width:100%;border:0;border-radius:16px;padding:15px;margin-top:19px;background:var(--purple);color:white;font-size:17px;font-weight:900;cursor:pointer;box-shadow:0 5px 0 #5139b3;transition:.12s}
+.start:hover{transform:translateY(-2px);box-shadow:0 7px 0 #5139b3}
+.privacy{font-size:12px;color:#898fa2;line-height:1.5;margin:17px 2px 0}
+.play{min-height:440px;padding:25px 30px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.play:before,.play:after{content:'✦';position:absolute;color:#ffcf65;font-size:35px}
+.play:before{top:23px;left:27px}
+.play:after{bottom:22px;right:29px;color:#74dbc0}
+.welcome .mascot{font-size:72px;animation:bob 2.3s infinite ease-in-out}
+.welcome h2{font-size:29px;margin:9px 0}
+.welcome p{max-width:380px;color:#737991;line-height:1.6;margin:4px auto 0}
+.status{position:absolute;top:24px;left:28px;right:28px;display:flex;justify-content:space-between;color:#868ca0;font-size:13px;font-weight:900}
+.bar{height:9px;border-radius:10px;background:#efedf7;width:100%;margin-top:8px;overflow:hidden}
+.bar span{height:100%;display:block;background:linear-gradient(90deg,var(--mint),#91e3c2);width:0;transition:.3s}
+.question{font-size:clamp(27px,4vw,38px);max-width:540px;margin:32px auto 17px}
+.visual{font-size:30px;min-height:43px;margin:0 0 7px;letter-spacing:2px}
+.answer{width:min(330px,100%);border:2px solid #e9e7f3;border-radius:16px;padding:15px;text-align:center;font-size:24px;font-weight:800;outline:none;color:var(--ink)}
+.answer:focus{border-color:var(--purple);box-shadow:0 0 0 4px #7357db1d}
+.send{width:min(330px,100%);margin-top:12px}
+.feedback{font-size:23px;font-weight:800;min-height:32px;margin:17px 0 0;color:#20a982}
+.feedback.wrong{color:#e77656}
+.hidden{display:none!important}
+.result-emoji{font-size:65px}
+.result h2{font-size:34px;margin:8px}
+.result p{font-size:18px;color:#747b91}
+.again{background:var(--pink);box-shadow:0 5px 0 #db5278;max-width:300px}
+.again:hover{box-shadow:0 7px 0 #db5278}
+@keyframes bob{50%{transform:translateY(-9px) rotate(4deg)}}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.panel{order:2}.play{min-height:390px}.top{margin-bottom:16px}.hero{margin-bottom:20px}.wrap{padding:18px 15px 32px}.badge{font-size:12px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header class="top">
+  <div class="brand"><span class="brand-icon">🌈</span> Bright Buddies</div>
+  <div class="badge">Little steps, big smarts ✨</div>
+</header>
+<section class="hero">
+  <h1>Let's learn <span>together!</span></h1>
+  <p>A happy place to practice letters and numbers.</p>
+</section>
+<div class="layout">
+<aside class="panel">
+  <h2>Pick your adventure</h2>
+  <p class="sub">What would you like to learn today?</p>
+  <button class="topic selected" data-topic="letters"><span class="emoji">🔤</span> Letter Land</button>
+  <button class="topic" data-topic="numbers"><span class="emoji">🔢</span> Number Nook</button>
+  <label class="select-label" for="rounds">How long shall we play?</label>
+  <select class="rounds" id="rounds">
+    <option value="3">3 questions · quick warm-up</option>
+    <option value="5" selected>5 questions · just right</option>
+    <option value="10">10 questions · super star</option>
+  </select>
+  <button class="start" id="start">Let's play! 🚀</button>
+  <p class="privacy">🔒 This game works right here in your browser. It doesn't ask for a name or send answers anywhere.</p>
+</aside>
+<section class="play">
+  <div id="welcome" class="welcome">
+    <div class="mascot">🦊</div>
+    <h2>Hi, clever cookie!</h2>
+    <p>Choose a learning adventure and I'll be right here to cheer you on.</p>
+  </div>
+  <div id="game" class="hidden" style="width:100%;max-width:540px">
+    <div class="status"><span id="count"></span><span id="level"></span></div>
+    <div class="bar"><span id="progress"></span></div>
+    <div class="question" id="question"></div>
+    <div class="visual" id="visual"></div>
+    <input class="answer" id="answer" autocomplete="off" aria-label="Your answer" placeholder="Type your answer">
+    <button class="start send" id="send">Check my answer! ✨</button>
+    <div class="feedback" id="feedback" aria-live="polite"></div>
+  </div>
+  <div id="result" class="result hidden">
+    <div class="result-emoji">🏆</div>
+    <h2>You're a superstar!</h2>
+    <p id="summary"></p>
+    <button class="start again" id="again">Play again 🎈</button>
+  </div>
+</section>
+</div>
+</main>
+<script>
+const words={A:'apple',B:'ball',C:'cat',D:'dog',E:'egg',F:'fish',G:'goat',H:'hat',I:'igloo',J:'jam',K:'kite',L:'lion',M:'moon',N:'nest',O:'owl',P:'pig',Q:'queen',R:'rabbit',S:'sun',T:'tree',U:'umbrella',V:'van',W:'whale',X:'xylophone',Y:'yo-yo',Z:'zebra'};
+const numberWords=['zero','one','two','three','four','five','six','seven','eight','nine','ten'];
+const praise=['Amazing! 🌟','You got it! 🎉','Wonderful thinking! 🦄','Super work! 🚀',"That's right! ✨"];
+const tryAgain=['Good try! 💛',"You're learning! 🌱",'Nice effort! 🌈','Let’s keep going! 🐣'];
+let topic='letters',rounds=5,asked=0,score=0,level=1,pending=null,waiting=false;
+try{level=Number(localStorage.getItem('brightBuddiesLevel')||1)}catch(e){}
+const $=id=>document.getElementById(id);
+
+document.querySelectorAll('.topic').forEach(btn=>btn.onclick=()=>{
+  document.querySelectorAll('.topic').forEach(x=>x.classList.remove('selected'));
+  btn.classList.add('selected');
+  topic=btn.dataset.topic;
+});
+
+function makeQuestion(){
+  if(topic==='letters'){
+    const choices='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.slice(0,Math.min(26,5+level*5));
+    const letter=choices[Math.floor(Math.random()*choices.length)];
+    const word=words[letter];
+    const kind=['sound','next','word'][Math.floor(Math.random()*3)];
+    if(kind==='sound')return{text:`What sound does ${letter} make? Type the letter!`,answer:letter.toLowerCase(),hint:`${letter} is for ${word}!`};
+    if(kind==='next'){
+      const next=String.fromCharCode(letter.charCodeAt(0)===90?65:letter.charCodeAt(0)+1);
+      return{text:`What letter comes after ${letter}?`,answer:next.toLowerCase(),hint:`After ${letter} comes ${next}.`};
+    }
+    return{text:`${word[0].toUpperCase()+word.slice(1)} starts with which letter?`,answer:letter.toLowerCase(),hint:`${word[0].toUpperCase()+word.slice(1)} starts with ${letter}.`};
+  }
+  const max=Math.min(10,3+level*2);
+  const n=Math.floor(Math.random()*(max+1));
+  const kind=['count','word','add'][Math.floor(Math.random()*3)];
+  if(kind==='word')return{text:`What number is '${numberWords[n]}'?`,answer:String(n),hint:`'${numberWords[n][0].toUpperCase()+numberWords[n].slice(1)}' is ${n}.`};
+  if(kind==='add'){
+    const a=Math.floor(Math.random()*(Math.floor(max/2)+1));
+    const b=Math.floor(Math.random()*(max-a+1));
+    return{text:`What is ${a} + ${b}?`,answer:String(a+b),hint:`${a} plus ${b} makes ${a+b}.`};
+  }
+  return{text:'Count the stars!',visual:n?'⭐ '.repeat(n):'(no stars!)',answer:String(n),hint:`There ${n===1?'is':'are'} ${n}.`};
+}
+
+function next(){
+  pending=makeQuestion();
+  waiting=true;
+  $('count').textContent=`Question ${asked+1} of ${rounds}`;
+  $('level').textContent=`🌱 Level ${level}`;
+  $('progress').style.width=`${asked/rounds*100}%`;
+  $('question').textContent=pending.text;
+  $('visual').textContent=pending.visual||'';
+  $('feedback').textContent='';
+  $('feedback').className='feedback';
+  $('answer').value='';
+  $('answer').placeholder=topic==='letters'?'Type a letter':'Type a number';
+  $('send').textContent='Check my answer! ✨';
+  $('send').onclick=submit;
+  $('answer').focus();
+}
+
+function start(){
+  rounds=Number($('rounds').value);
+  asked=0;
+  score=0;
+  $('welcome').classList.add('hidden');
+  $('result').classList.add('hidden');
+  $('game').classList.remove('hidden');
+  next();
+}
+
+function submit(){
+  if(!waiting)return;
+  const guess=$('answer').value.trim().toLowerCase();
+  if(!guess){$('answer').focus();return}
+  waiting=false;
+  const correct=guess===pending.answer;
+  asked++;
+  if(correct)score++;
+  $('feedback').textContent=correct?praise[Math.floor(Math.random()*praise.length)]:`${tryAgain[Math.floor(Math.random()*tryAgain.length)]} ${pending.hint}`;
+  $('feedback').className='feedback '+(correct?'':'wrong');
+  $('send').textContent=asked>=rounds?'See my stars! ⭐':'Next question ➜';
+  $('send').onclick=asked>=rounds?finish:next;
+  $('progress').style.width=`${asked/rounds*100}%`;
+}
+
+function finish(){
+  if(score===asked)level=Math.min(5,level+1);
+  else if(score*2<asked)level=Math.max(1,level-1);
+  try{localStorage.setItem('brightBuddiesLevel',String(level))}catch(e){}
+  const msg=score===asked?'Ready for a slightly bigger challenge next time?':score*2<asked?'Next time we’ll practice with easier questions. Keep going!':'Your next round will be at the same level. Keep shining!';
+  $('game').classList.add('hidden');
+  $('result').classList.remove('hidden');
+  $('summary').textContent=`You got ${score} out of ${asked} right. ${msg}`;
+}
+
+$('start').onclick=start;
+$('again').onclick=()=>{
+  $('result').classList.add('hidden');
+  $('welcome').classList.remove('hidden');
+};
+$('send').onclick=submit;
+$('answer').addEventListener('keydown',e=>{if(e.key==='Enter')submit()});
+</script>
+</body>
+</html>
+```
